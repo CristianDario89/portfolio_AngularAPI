@@ -1,0 +1,69 @@
+<div class="row wrap-titulo my-2">
+
+  <div class="col-lg-8">
+    <div class="parallax img-tres" id="experiencia">
+      <h2 class="texto-interior">
+        Experiencia
+      </h2>
+    </div>
+  </div>
+
+  <div class="col-lg-4 wrap-img">
+    <img src="../../../assets/educacion/s5.jpg">
+  </div>
+
+</div>
+
+<div class="card mat-card" id="card-experiencia">
+
+  <div class="card-titles">
+ 
+    <button (click)="redirect()" class="btn"><i class="fa fa-plus"></i></button>
+
+  </div>
+
+  <ul class="items-list">
+    <li *ngFor="let experiencia of experienciaList" 
+        (click)="openForEdit(experiencia)"
+        [class.active]="experiencia == selectedExperiencia"
+    >
+
+      <div class="data-container">
+
+        <div class="logo-image-container">
+          <img class="logo-image" [src]="experiencia.img">
+        </div>
+        <div class="list-info">
+          <div class="wrap-data">
+            <p id="title">{{experiencia.puesto}}</p>
+            <p id="puesto">{{experiencia.empresa}}</p>
+            <p><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time></p>
+          </div>
+        </div>
+ 
+      </div>
+    </li>
+  </ul>
+   
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedExperiencia.empresa" placeholder="Agregar empresa" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedExperiencia.puesto" placeholder="Agregar puesto" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedExperiencia.img" placeholder="Agregar img" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedExperiencia.start" placeholder="Agregar" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedExperiencia.end" placeholder="Agregar " class="form-control">
+  </div>
+
+  <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
+  <button  *ngIf="selectedExperiencia.id !== 0"
+            class="btn btn-danger"
+            (click)="eliminar()">Eliminar
+  </button>
+</div>
