@@ -16,55 +16,70 @@
 
 <div class="card mat-card" id="card-educacion">
 
-  <div class="card-titles">
-    <button (click)="redirect()" class="btn"><i class="fa fa-plus"></i></button>
+  <div class="card-titles"> 
+   <button (click)="show=!show" class="btn"><i class="fa fa-plus"></i></button>
   </div>
-
 
   <ul class="items-list">
     <li *ngFor="let educacion of educacionList" 
         (click)="openForEdit(educacion)"
-        [class.active]="educacion == selectedEducacion">
+        [class.active]="educacion == selectedEducacion"
+    >
+
       <div class="data-container">
 
         <div class="logo-image-container">
           <img class="logo-image" [src]="educacion.img">
         </div>
-        <div class="list-info">
-          <div class="wrap-data">
+
+         
+
+        <div class="wrap-data">
             <p id="institucion">{{educacion.institucion}}</p>
             <p id="title">{{educacion.title}}</p>
             <p id="time"><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
-          </div>
         </div>
- 
-     </div>
+
+      </div>
     </li>
    
   </ul>
 
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedEducacion.institucion" placeholder="Agregar institucion" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedEducacion.title" placeholder="Agregar title" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedEducacion.img" placeholder="Agregar img" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedEducacion.start" placeholder="Agregar" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedEducacion.end" placeholder="Agregar " class="form-control">
+<div class="wrap-crud" *ngIf="show">
+
+  <div #show>
+      
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedEducacion.institucion" placeholder="Agregar institucion" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedEducacion.title" placeholder="Agregar title" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedEducacion.img" placeholder="Agregar img" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedEducacion.start" placeholder="Agregar" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedEducacion.end" placeholder="Agregar " class="form-control">
+    </div>
+
+ 
+      <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
+      <button  *ngIf="selectedEducacion.id !== 0"
+                class="btn btn-danger"
+                (click)="eliminar()">Eliminar
+      </button>
+  
   </div>
 
-  <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
-  <button  *ngIf="selectedEducacion.id !== 0"
-            class="btn btn-danger"
-            (click)="eliminar()">Eliminar
-  </button>
- 
+  <div>
+    GESTIÓN EDUCACIÓN
+  </div>
+
+</div>  
+
   <div class="gallery-image">
     <div class="img-box">
       <img src="../../../assets/educacion/analytic.png" alt="" />

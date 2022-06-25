@@ -8,6 +8,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
+  show = false; 
   experienciaList: any = [
     {
     "id":1, 

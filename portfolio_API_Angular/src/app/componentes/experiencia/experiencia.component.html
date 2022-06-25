@@ -18,7 +18,7 @@
 
   <div class="card-titles">
  
-    <button (click)="redirect()" class="btn"><i class="fa fa-plus"></i></button>
+    <button (click)="show=!show" class="btn"><i class="fa fa-plus"></i></button>
 
   </div>
 
@@ -35,35 +35,48 @@
         </div>
         <div class="list-info">
           <div class="wrap-data">
-            <p id="title">{{experiencia.puesto}}</p>
             <p id="puesto">{{experiencia.empresa}}</p>
-            <p><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time></p>
+            <p id="title">{{experiencia.puesto}}</p>
+            <p id="time"><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time></p>
           </div>
         </div>
  
       </div>
     </li>
   </ul>
-   
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedExperiencia.empresa" placeholder="Agregar empresa" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedExperiencia.puesto" placeholder="Agregar puesto" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedExperiencia.img" placeholder="Agregar img" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedExperiencia.start" placeholder="Agregar" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="selectedExperiencia.end" placeholder="Agregar " class="form-control">
+ 
+  <div class="wrap-crud" *ngIf="show">
+
+    <div #show>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="selectedExperiencia.empresa" placeholder="Agregar empresa" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="selectedExperiencia.puesto" placeholder="Agregar puesto" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="selectedExperiencia.img" placeholder="Agregar img" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="selectedExperiencia.start" placeholder="Agregar" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="selectedExperiencia.end" placeholder="Agregar " class="form-control">
+        </div>
+
+        <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
+        <button  *ngIf="selectedExperiencia.id !== 0"
+                  class="btn btn-danger"
+                  (click)="eliminar()">Eliminar
+        </button>
+
+
+    </div> 
+
+    <div>
+      GESTIÓN EXPERIENCIA
+    </div>
+
   </div>
 
-  <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
-  <button  *ngIf="selectedExperiencia.id !== 0"
-            class="btn btn-danger"
-            (click)="eliminar()">Eliminar
-  </button>
-</div>
+</div> 

@@ -8,18 +8,19 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
+  show = false; 
   educacionList: any = [ //Datos guardados temporalmente en u8nh arreglo
     {
     "id":1, 
     "institucion":"Juan XXIII",
-    "title":"Juan XXIII",
+    "title":"Técnico en informática personal y profesional",
     "img":"./assets/img/logoedu1.jpg",
     "start":"2002",
     "end":"2005"
 },
 {
     "id":2, 
-    "institucion":"UDEMY ACADEMY",
+    "institucion":"Udemy academy",
     "title":"Master en Javascript",
     "img":"./assets/img/logoedu2.png",
     "start":"Ago 2020",
